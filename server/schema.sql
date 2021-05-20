@@ -12,25 +12,16 @@ CREATE TABLE users (
 
 CREATE TABLE rooms (
   id INT unsigned NOT NULL AUTO_INCREMENT,
-  room_name VARCHAR(30) NULL DEFAULT NULL,
+  roomname VARCHAR(30) NULL DEFAULT NULL,
   PRIMARY KEY (id)
-);
-
-CREATE TABLE room_subscriptions (
-  id INT unsigned NOT NULL AUTO_INCREMENT,
-  id_user INT NOT NULL,
-  id_room INT NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_user) REFERENCES users (id),
-  FOREIGN KEY (id_room) REFERENCES rooms (id)
 );
 
 CREATE TABLE messages (
   id INT unsigned NOT NULL AUTO_INCREMENT,
-  id_user INT NOT NULL,
-  id_room INT NOT NULL,
-  time_stamp DATETIME NOT NULL,
-  message_text MEDIUMTEXT NULL,
+  id_user INT unsigned NOT NULL,
+  id_room INT unsigned NOT NULL,
+  time_stamp DATETIME NULL,
+  message MEDIUMTEXT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_user) REFERENCES users (id),
   FOREIGN KEY (id_room) REFERENCES rooms (id)
